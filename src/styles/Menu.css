@@ -1,0 +1,11 @@
+.left-menu {
+    flex: 0 0 250px;
+}
+
+.offcanvas.offcanvas-start {
+    max-width: 250px;
+}
+
+.fade.toast {
+    width: 250px;
+}

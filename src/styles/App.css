@@ -1,0 +1,55 @@
+* {
+    word-break: break-word;
+}
+
+.btn-purple {
+    background-color: #eeeeee;
+    border-color: #5c71c5;
+    color: #5c71c5;
+    box-shadow: 0 0 0 0 #5c71c5;
+}
+
+.btn-purple:hover {
+    background-color: #f7f8fc;
+    border-color: #5c71c5;
+    color: #5c71c5;
+}
+
+.btn-purple:active {
+    background-color: #f7f8fc;
+    border-color: #5c71c5;
+    color: #5c71c5;
+    box-shadow: 0 0 2px 2px #5c71c5;
+}
+
+.btn-red {
+    background-color: #eeeeee;
+    border-color: red;
+    color: red;
+    box-shadow: 0 0 0 0 red;
+}
+
+.btn-red:hover {
+    background-color: #FFC0CB;
+    border-color: red;
+    color: red;
+}
+
+.btn-red:active {
+    background-color: #FFC0CB;
+    border-color: red;
+    color: red;
+    box-shadow: 0 0 2px 2px red;
+}
+
+.selected {
+    color: cornflowerblue;
+}
+
+.answered {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}

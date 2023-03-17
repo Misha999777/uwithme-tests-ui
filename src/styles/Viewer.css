@@ -1,0 +1,10 @@
+.question {
+    max-width: 750px;
+    gap: 30px;
+    margin: auto;
+}
+
+.renderer {
+    width: 100%;
+    overflow-x: scroll;
+}
