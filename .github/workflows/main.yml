@@ -1,0 +1,29 @@
+name: Main
+
+on:
+  push:
+    branches: [ master ]
+
+permissions:
+  packages: write
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run build
+      - name: Build and Publish latest Docker image
+        uses: VaultVulp/gp-docker-action@1.6.0
+        with:
+          dockerfile: ./image/Dockerfile
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-name: uwithme-tests-ui
+          image-tag: latest
+          custom-args: --platform=linux/arm64,linux/amd64
