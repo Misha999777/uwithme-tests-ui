@@ -60,4 +60,4 @@ export default function ResultList() {
             <tbody>{testSessions}</tbody>
         </Table>
     )
-};
+}

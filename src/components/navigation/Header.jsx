@@ -1,6 +1,7 @@
 import {useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
 import {testsActions} from "../../store/tests/testsSlice";
+import {sessionActions} from "../../store/session/sessionSlice";
 import {useWindowSize} from "../../hooks/useWindowSize";
 import {authService} from "../../service/authService";
 import {Button, Nav} from "react-bootstrap";
@@ -14,7 +15,7 @@ export default function Header() {
 
     return (
         <Nav className="ps-3 pe-3 navbar toolbar">
-            {width < 750 && pathname !== "/start"
+            {width < 767 && pathname !== "/start"
                 ?
                 <i
                     className="fa fa-bars fa-2x"
@@ -29,7 +30,10 @@ export default function Header() {
             }
             <Button
                 variant="purple"
-                onClick={() => authService.logout()}
+                onClick={() => {
+                    dispatch(sessionActions.sessionCompleted())
+                    authService.logout()
+                }}
             >
                 Вийти
             </Button>

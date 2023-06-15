@@ -3,7 +3,7 @@ import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectAdminLoading} from "./store/tests/testsApiSlice";
 import {selectSessionLoading} from "./store/session/sessionApiSlice";
-import {authService, isAdmin} from "./service/authService";
+import {authService, hasAdminRole} from "./service/authService";
 import LoadingIndicator from "./components/common/LoadingIndicator";
 import Header from "./components/navigation/Header";
 import Menu from "./components/navigation/Menu";
@@ -18,32 +18,36 @@ export default function App() {
     const adminLoading = useSelector(selectAdminLoading);
     const studentLoading = useSelector(selectSessionLoading);
 
-    const loading = adminLoading || studentLoading;
+    const isLoading = adminLoading || studentLoading;
+    const shouldShowMenu = pathname !== "/" && pathname !== "/start";
 
-    const loggedIn = authService.isLoggedIn();
-    const admin = isAdmin();
+    const isLoggedIn = authService.isLoggedIn();
+    const isAdmin = hasAdminRole();
 
     useEffect(() => {
-        if (pathname === "/" && admin) {
+        if (pathname === "/" && isAdmin) {
             navigate("/admin");
         }
-        if (pathname === "/admin" && !admin) {
+        if (pathname === "/" && !isAdmin) {
             navigate("/start");
         }
-    }, [pathname, admin, navigate])
+    }, [pathname, isAdmin, navigate])
 
-    if (!loggedIn) {
+    if (!isLoggedIn) {
         return <LoadingIndicator/>;
     }
 
     return (
-        <LoadingIndicator loading={loading}>
+        <LoadingIndicator loading={isLoading}>
             <Header/>
-            <div className="d-flex">
-                <Menu/>
-                <div className="w-100 ps-3 pe-3 mt-5">
-                    <Outlet/>
+            <div className="row w-100 m-0 pt-5">
+                <div className="col">
+                    {shouldShowMenu && <Menu/>}
                 </div>
+                <div className="col-12 col-md-8 col-lg-9">
+                    {shouldShowMenu && <Outlet/>}
+                </div>
+                {!shouldShowMenu && <Outlet/>}
             </div>
         </LoadingIndicator>
     );

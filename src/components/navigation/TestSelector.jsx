@@ -16,6 +16,21 @@ export default function TestSelector() {
 
     const [show, setShow] = useState(false);
 
+    function copyTestUrl() {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = window.location.origin + "/start?testId=" + selectedTestId;
+
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+            document.execCommand("copy")
+            setShow(true)
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+
     const listItems = data?.map(item => (
         <ListGroup.Item
             className="text-center"
@@ -36,10 +51,7 @@ export default function TestSelector() {
             <div className="pb-3 text-center">
                 <Button
                     variant="purple"
-                    onClick={() => {
-                        navigator.clipboard.writeText(window.location.origin + "/start?testId=" + selectedTestId);
-                        setShow(true);
-                    }}
+                    onClick={() => copyTestUrl()}
                 >
                     Створити посилання
                 </Button>

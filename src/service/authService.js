@@ -7,7 +7,7 @@ export const authService = new AuthService({
     autoLogin: true
 });
 
-export function isAdmin() {
+export function hasAdminRole() {
     return authService.isLoggedIn() && authService.getUserInfo("roles")
-        .some(role => Config.ADMIN_ROLES.includes(role));
+        ?.some(role => Config.ADMIN_ROLES.includes(role));
 }

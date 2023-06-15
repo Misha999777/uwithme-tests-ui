@@ -1,16 +1,19 @@
-import LoadingOverlay from "react-loading-overlay-ts";
+import {Fragment} from "react";
 import SyncLoader from "react-spinners/SyncLoader";
 import "../../styles/Loader.css"
 
 export default function LoadingIndicator({loading = true, children = null}) {
-    return (
-        <LoadingOverlay
-            spinner={<SyncLoader color={"#FFFFFF"}/>}
-            text="Завантаження..."
-            active={loading}
-            fadeSpeed={0}
-        >
-            {children}
-        </LoadingOverlay>
+
+    const loader = (
+        <div className="overlay">
+            <SyncLoader color={"#FFFFFF"}/>
+        </div>
     )
-};
+
+    return (
+        <Fragment>
+            {children}
+            {loading && loader}
+        </Fragment>
+    )
+}

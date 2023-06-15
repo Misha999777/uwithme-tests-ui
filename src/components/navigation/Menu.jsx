@@ -18,15 +18,11 @@ export default function Menu() {
 
     const elements = pathname === "/test" ? <Timer/> : <TestSelector/>;
 
-    if (pathname === "/start") {
-        return;
-    }
-
     return (
         <Fragment>
-            {width > 750
+            {width > 767
                 ?
-                <Navbar className="ps-3 pt-5 flex-column left-menu">
+                <Navbar className="flex-column left-menu">
                     {elements}
                 </Navbar>
                 :

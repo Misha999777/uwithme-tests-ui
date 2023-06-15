@@ -8,9 +8,10 @@ import "prismjs/themes/prism.min.css";
 export default function MarkdownRenderer({source}) {
     return (
         <ReactMarkdown
-            children={source}
             remarkPlugins={[RemarkMathPlugin]}
             rehypePlugins={[RehypeKatexPlugin, [RehypePrismPlugin, {ignoreMissing: true}]]}
-        />
+        >
+            {source}
+        </ReactMarkdown>
     )
-};
+}

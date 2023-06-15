@@ -1,8 +1,10 @@
 import {Fragment, useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {skipToken} from "@reduxjs/toolkit/dist/query";
 import {selectTestId, testsActions} from "../../store/tests/testsSlice";
 import {useDeleteTestMutation, useFetchTestQuery, useSaveTestMutation} from "../../store/tests/testsApiSlice";
+import {hasAdminRole} from "../../service/authService";
 import {Button, Form} from "react-bootstrap";
 import QuestionList from "./QuestionList";
 import TestSessionList from "./ResultList";
@@ -10,6 +12,7 @@ import "../../styles/Test.css"
 
 export default function Test() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const selectedTestId = useSelector(selectTestId);
 
@@ -22,10 +25,13 @@ export default function Test() {
     const [durationMinutes, setDurationMinutes] = useState("");
 
     useEffect(() => {
+        if (!hasAdminRole()) {
+            navigate("/start")
+        }
         setName(currentData?.name ?? "")
         setQuestionsNumber(currentData?.questionsNumber ?? "")
         setDurationMinutes(currentData?.durationMinutes ?? "")
-    }, [currentData])
+    }, [currentData, navigate])
 
     return (
         <Fragment>

@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {skipToken} from "@reduxjs/toolkit/dist/query";
 import {useFetchTestSessionQuery} from "../../store/session/sessionApiSlice";
 import {selectTestId} from "../../store/session/sessionSlice";
+import {hasAdminRole} from "../../service/authService";
 import {Alert} from "react-bootstrap";
 
 export default function Begin() {
@@ -21,7 +22,10 @@ export default function Begin() {
         if (currentData && !currentData.elapsedTime) {
             navigate("/test")
         }
-    }, [currentData, navigate])
+        if (!testId && hasAdminRole()) {
+            navigate("/admin")
+        }
+    }, [currentData, testId, navigate])
 
     if (!testId || isError) {
         return (

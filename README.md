@@ -24,7 +24,7 @@ You can run this application by
     docker compose up -d
     ```
 
-3. Downloading [University With Tests Service](https://github.com/Misha999777/uwithme-tests-service)
+3. Downloading [University With Me Tests Service](https://github.com/Misha999777/uwithme-tests-service)
 
 4. Starting it with
     ```shell
@@ -38,7 +38,7 @@ You can run this application by
 
 6. Starting University With Me Tests UI with
     ```shell
-    mvn start
+    npm start
     ```
 
 ## Copyright

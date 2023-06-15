@@ -1,10 +1,13 @@
 .question {
-    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 30px;
     margin: auto;
 }
 
 .renderer {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }

@@ -23,7 +23,7 @@ export default function QuestionViewer({result, question, userAnswers, onAnswerS
     ));
 
     return (
-        <div className="pt-5 d-flex flex-column align-items-center question">
+        <div className="pt-5 d-flex question">
             <div className="text-center renderer">
                 <MarkdownRenderer source={question?.text}/>
             </div>
