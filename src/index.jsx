@@ -3,7 +3,6 @@ import {createRoot} from "react-dom/client";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
-import {register} from "register-service-worker"
 import LoadingIndicator from "./components/common/LoadingIndicator";
 import App from "./App";
 
@@ -54,4 +53,6 @@ root.render(
     </React.StrictMode>
 );
 
-register(`${process.env.PUBLIC_URL}/service-worker.js`);
+if (location.protocol === "https:") {
+    navigator.serviceWorker?.register("/sw.js");
+}
