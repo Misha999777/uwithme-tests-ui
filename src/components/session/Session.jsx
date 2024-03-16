@@ -1,7 +1,7 @@
 import {Fragment, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {skipToken} from "@reduxjs/toolkit/dist/query";
+import {skipToken} from "@reduxjs/toolkit/query";
 import {selectAnswers, selectQuestionId, selectTestId, sessionActions} from "../../store/session/sessionSlice";
 import {useFetchTestSessionQuery} from "../../store/session/sessionApiSlice";
 import Paging from "../navigation/Paging";

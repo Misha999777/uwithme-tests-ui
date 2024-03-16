@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {skipToken} from "@reduxjs/toolkit/dist/query";
+import {skipToken} from "@reduxjs/toolkit/query";
 import {useFetchTestSessionQuery} from "../../store/session/sessionApiSlice";
 import {selectTestId} from "../../store/session/sessionSlice";
 import {hasAdminRole} from "../../service/authService";

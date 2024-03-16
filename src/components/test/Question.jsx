@@ -1,7 +1,7 @@
 import {Fragment, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {skipToken} from "@reduxjs/toolkit/dist/query";
+import {skipToken} from "@reduxjs/toolkit/query";
 import {selectQuestionId, selectTestId} from "../../store/tests/testsSlice";
 import {useFetchQuestionQuery, useSaveQuestionMutation} from "../../store/tests/testsApiSlice";
 import {Accordion, Button, Form} from "react-bootstrap";

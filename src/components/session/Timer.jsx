@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {skipToken} from "@reduxjs/toolkit/dist/query";
+import {skipToken} from "@reduxjs/toolkit/query";
 import {useFetchTestSessionQuery, useSaveTestSessionMutation} from "../../store/session/sessionApiSlice";
 import {selectAnswers, selectTestId, sessionActions} from "../../store/session/sessionSlice";
 import {Button} from "react-bootstrap";
