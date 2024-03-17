@@ -1,4 +1,4 @@
-import {AuthService} from "tcomad-oidc";
+import {AuthService} from "auth-oidc";
 import * as Config from "../config";
 
 export const authService = new AuthService({

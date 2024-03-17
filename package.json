@@ -10,6 +10,7 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.9.0",
     "@reduxjs/toolkit": "^2.2.1",
+    "auth-oidc": "^0.0.3",
     "bootstrap": "^5.3.3",
     "font-awesome": "^4.7.0",
     "react": "^18.2.0",
@@ -23,7 +24,6 @@
     "react-spinners": "^0.13.8",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
-    "tcomad-oidc": "^4.2.3",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0"
   },
