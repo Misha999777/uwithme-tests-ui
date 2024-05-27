@@ -5,7 +5,7 @@ export default function Paging({result, questions, selectedQuestion, userAnswers
 
     const nextQuestion = (() => {
         const index = questions?.map(question => question.id)
-            .indexOf(selectedQuestion.id) ?? -1;
+            .indexOf(selectedQuestion?.id) ?? -1;
         if (index < 0) {
             return null;
         }
@@ -32,7 +32,7 @@ export default function Paging({result, questions, selectedQuestion, userAnswers
     const listItems = questions?.map((item, id) => (
         <Pagination.Item
             key={id}
-            active={selectedQuestion.id === item.id}
+            active={selectedQuestion?.id === item.id}
             onClick={() => onQuestionSelected(item)}
         >
             <div className={getClass(item)}>

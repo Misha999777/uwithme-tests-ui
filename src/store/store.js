@@ -12,7 +12,7 @@ listenerMiddleware.startListening({
         sessionApiSlice.endpoints.fetchTestSession.matchFulfilled,
         sessionActions.questionSelected,
         sessionActions.answerSelected,
-        sessionActions.sessionCompleted
+        sessionActions.sessionEnded
     ),
     effect: (_action, listenerApi) =>
         localStorage.setItem(

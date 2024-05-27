@@ -31,7 +31,7 @@ export default function Header() {
             <Button
                 variant="purple"
                 onClick={() => {
-                    dispatch(sessionActions.sessionCompleted())
+                    dispatch(sessionActions.sessionEnded())
                     authService.logout()
                 }}
             >

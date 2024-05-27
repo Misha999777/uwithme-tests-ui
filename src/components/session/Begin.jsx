@@ -1,10 +1,9 @@
 import {useEffect} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {skipToken} from "@reduxjs/toolkit/dist/query";
+import {skipToken} from "@reduxjs/toolkit/query";
 import {useFetchTestSessionQuery} from "../../store/session/sessionApiSlice";
 import {selectTestId} from "../../store/session/sessionSlice";
-import {hasAdminRole} from "../../service/authService";
 import {Alert} from "react-bootstrap";
 
 export default function Begin() {
@@ -22,10 +21,7 @@ export default function Begin() {
         if (currentData && !currentData.elapsedTime) {
             navigate("/test")
         }
-        if (!testId && hasAdminRole()) {
-            navigate("/admin")
-        }
-    }, [currentData, testId, navigate])
+    }, [currentData, navigate])
 
     if (!testId || isError) {
         return (
@@ -37,7 +33,23 @@ export default function Begin() {
                 <hr/>
             </Alert>
         );
-    } else if (currentData?.elapsedTime) {
+    }
+
+    if (!currentData?.elapsedTime) {
+        return;
+    }
+
+    if (currentData.elapsedTime > currentData.durationMinutes) {
+        return (
+            <Alert variant="danger">
+                <Alert.Heading>Помилка</Alert.Heading>
+                <p>
+                    Ви не завершили тест вчасно, зв'яжіться з викладачем.
+                </p>
+                <hr/>
+            </Alert>
+        );
+    } else {
         return (
             <Alert variant="success">
                 <Alert.Heading>Дякуємо</Alert.Heading>

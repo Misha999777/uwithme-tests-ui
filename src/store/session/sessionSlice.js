@@ -3,6 +3,7 @@ import {sessionApiSlice} from "./sessionApiSlice";
 
 export const initialState = {
     selectedTestId: null,
+    selectedTestSessionId: null,
     selectedQuestionId: null,
     userAnswersByQuestionId: null
 };
@@ -29,8 +30,9 @@ export const sessionSlice = createSlice({
 
             state.userAnswersByQuestionId = {...state.userAnswersByQuestionId, [payload.questionId]: userAnswers};
         },
-        sessionCompleted: (state) => {
+        sessionEnded: (state) => {
             state.selectedTestId = null;
+            state.selectedTestSessionId = null;
             state.selectedQuestionId = null;
             state.userAnswersByQuestionId = null;
         },
@@ -38,8 +40,17 @@ export const sessionSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addMatcher(sessionApiSlice.endpoints.fetchTestSession.matchFulfilled, (state, {payload}) => {
-                state.selectedTestId = payload.testId;
-                state.selectedQuestionId = state.selectedQuestionId ?? payload.questionSnapshots[0].id;
+                if (payload.elapsedTime) {
+                    sessionSlice.caseReducers.sessionEnded(state)
+                } else {
+                    if (state.selectedTestSessionId !== payload.id) {
+                        state.selectedQuestionId = null;
+                        state.userAnswersByQuestionId = null;
+                    }
+                    state.selectedTestId = payload.testId;
+                    state.selectedTestSessionId = payload.id;
+                    state.selectedQuestionId = state.selectedQuestionId ?? payload.questionSnapshots[0].id;
+                }
             })
     }
 });

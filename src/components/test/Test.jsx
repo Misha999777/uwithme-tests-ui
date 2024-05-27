@@ -1,7 +1,7 @@
 import {Fragment, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {skipToken} from "@reduxjs/toolkit/dist/query";
+import {skipToken} from "@reduxjs/toolkit/query";
 import {selectTestId, testsActions} from "../../store/tests/testsSlice";
 import {useDeleteTestMutation, useFetchTestQuery, useSaveTestMutation} from "../../store/tests/testsApiSlice";
 import {hasAdminRole} from "../../service/authService";
