@@ -50,7 +50,7 @@ export default function Paging({result, questions, selectedQuestion, userAnswers
                     Наступне питання
                 </Button>
             }
-            <Pagination className="justify-content-center mt-3">
+            <Pagination className="flex-wrap justify-content-center mt-3">
                 {listItems}
             </Pagination>
         </div>
