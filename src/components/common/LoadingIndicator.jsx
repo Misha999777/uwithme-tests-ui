@@ -1,19 +1,21 @@
-import {Fragment} from "react";
-import SyncLoader from "react-spinners/SyncLoader";
-import "../../styles/Loader.css"
+import { Fragment } from 'react'
 
-export default function LoadingIndicator({loading = true, children = null}) {
+import SyncLoader from 'react-spinners/SyncLoader'
 
-    const loader = (
-        <div className="overlay">
-            <SyncLoader color={"#FFFFFF"}/>
-        </div>
-    )
+import '../../styles/Loader.css'
 
-    return (
-        <Fragment>
-            {children}
-            {loading && loader}
-        </Fragment>
-    )
+export default function LoadingIndicator({ loading = true, children = null }) {
+
+  const loader = (
+    <div className="overlay">
+      <SyncLoader color="#FFFFFF" />
+    </div>
+  )
+
+  return (
+    <Fragment>
+      {children}
+      {loading && loader}
+    </Fragment>
+  )
 }
