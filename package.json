@@ -12,7 +12,7 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.9.0",
     "@reduxjs/toolkit": "^2.7.0",
-    "auth-oidc": "^1.0.2",
+    "auth-oidc": "^1.2.2",
     "bootstrap": "^5.3.5",
     "font-awesome": "^4.7.0",
     "react": "^19.1.0",
