@@ -19,14 +19,14 @@ export default function Session() {
 
   const { currentData } = useFetchTestSessionQuery(testId ?? skipToken)
 
-  const lastTestId = useRef()
+  const lastTestIdRef = useRef()
   if (testId) {
-    lastTestId.current = testId
+    lastTestIdRef.current = testId
   }
 
   useEffect(() => {
     if (!testId) {
-      navigate(lastTestId.current ? '/start?testId=' + lastTestId.current : '/start')
+      navigate(lastTestIdRef.current ? '/start?testId=' + lastTestIdRef.current : '/start')
     }
   }, [testId, navigate])
 

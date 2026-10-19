@@ -1,45 +1,43 @@
 # University With Me Test System
 
-[![License](https://img.shields.io/:license-GPL-blue.svg)](https://github.com/Misha999777/uwithme-tests-ui/blob/master/LICENSE)
-
-## Description
-
-System for testing students. Uses [React](https://react.dev/)
+As a component of the broader `University With Me` project, this application provides universities and other educational entities with a platform to set up tests and assess students.
 
 ## Requirements
 
-For building the application you will need:
+To develop the application, you will need:
 
 - [Node.js](https://nodejs.org/en)
 - [NPM](https://www.npmjs.com/)
 
 ## Running the application locally
 
-You can run this application by
+To run this application, follow these steps:
 
-1. Downloading [Docker files](https://github.com/HappyMary16/uwithme-docker-files)
+1. Download the [Docker files](https://github.com/HappyMary16/uwithme-docker-files).
+2. Start them using:
 
-2. Starting them with
-    ```shell
-    docker compose up -d
-    ```
+```shell
+docker compose up -d
+```
 
-3. Downloading [University With Me Tests Service](https://github.com/Misha999777/uwithme-tests-service)
+3. Download the [University With Me Tests Service](https://github.com/Misha999777/uwithme-tests-service).
+4. Start it using:
 
-4. Starting it with
-    ```shell
-    mvn spring-boot:run
-    ```
+```shell
+mvn spring-boot:run
+```
 
-5. Installing University With Me Tests UI dependencies with
-    ```shell
-    npm install
-    ```
+5. Install the UI dependencies using:
 
-6. Starting University With Me Tests UI with
-    ```shell
-    npm start
-    ```
+```shell
+npm install
+```
+
+6. Start the UI using:
+
+```shell
+npm start
+```
 
 ## Copyright
 

@@ -8,8 +8,8 @@ import '../../styles/Viewer.css'
 
 export default function QuestionViewer({ result, question, userAnswers, onAnswerSelected }) {
 
-  const answerOptions = question?.answers.map((answer, i) => (
-    <Fragment key={i}>
+  const answerOptions = question?.answers.map(answer => (
+    <Fragment key={answer.text}>
       <Form.Check
         type={question.multipleChoice ? 'checkbox' : 'radio'}
         className={answer.correct && 'answered'}

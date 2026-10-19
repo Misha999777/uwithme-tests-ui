@@ -1,18 +1,22 @@
 import ReactMarkdown from 'react-markdown'
+import RemarkGfmPlugin from 'remark-gfm'
 import RemarkMathPlugin from 'remark-math'
 import RehypeKatexPlugin from 'rehype-katex'
-import RehypePrismPlugin from '@mapbox/rehype-prism'
+import RehypeHighlightPlugin from 'rehype-highlight'
 
-import 'katex/dist/katex.min.css'
-import 'prismjs/themes/prism.min.css'
+import '@uiw/react-markdown-preview/markdown.css'
+import 'highlight.js/styles/github.min.css'
 
 export default function MarkdownRenderer({ source }) {
   return (
-    <ReactMarkdown
-      remarkPlugins={[RemarkMathPlugin]}
-      rehypePlugins={[RehypeKatexPlugin, [RehypePrismPlugin, { ignoreMissing: true }]]}
-    >
-      {source}
-    </ReactMarkdown>
+    <div className="wmde-markdown" data-color-mode="light">
+      <ReactMarkdown
+        skipHtml
+        remarkPlugins={[RemarkGfmPlugin, RemarkMathPlugin]}
+        rehypePlugins={[[RehypeKatexPlugin, { output: 'mathml' }], RehypeHighlightPlugin]}
+      >
+        {source}
+      </ReactMarkdown>
+    </div>
   )
 }

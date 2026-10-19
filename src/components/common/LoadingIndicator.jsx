@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import SyncLoader from 'react-spinners/SyncLoader'
+import { SyncLoader } from 'react-spinners'
 
 import '../../styles/Loader.css'
 

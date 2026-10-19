@@ -37,7 +37,7 @@ export default function QuestionList() {
             deleteQuestion({ testId: selectedTestId, questionId: item.id })
           }}
         >
-          <i className="fa fa-trash-o" />
+          ✕
         </Button>
       </td>
     </tr>

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { Button, Nav } from 'react-bootstrap'
+import { Button, Nav, Navbar } from 'react-bootstrap'
 
 import { testsActions } from '../../store/tests/testsSlice'
 import { sessionActions } from '../../store/session/sessionSlice'
@@ -18,8 +18,7 @@ export default function Header() {
   return (
     <Nav className="ps-3 pe-3 navbar toolbar">
       {width < 767 && pathname !== '/start' ? (
-        <i
-          className="fa fa-bars fa-2x"
+        <Navbar.Toggle
           onClick={() => dispatch(testsActions.menuToggled())}
         />
       ) : (

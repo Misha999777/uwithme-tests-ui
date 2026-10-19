@@ -32,7 +32,7 @@ export default function Paging({ result, questions, selectedQuestion, userAnswer
 
   const listItems = questions?.map((item, id) => (
     <Pagination.Item
-      key={id}
+      key={item.id}
       active={selectedQuestion?.id === item.id}
       onClick={() => onQuestionSelected(item)}
     >
