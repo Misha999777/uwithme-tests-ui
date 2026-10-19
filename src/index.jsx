@@ -54,7 +54,3 @@ root.render(
     </Provider>
   </React.StrictMode>,
 )
-
-if (location.protocol === 'https:') {
-  navigator.serviceWorker?.register('/sw.js')
-}

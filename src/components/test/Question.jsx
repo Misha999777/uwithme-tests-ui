@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -26,18 +26,23 @@ export default function Question() {
 
   const [answers, setAnswers] = useState([])
   const [text, setText] = useState('')
+  const nextIdRef = useRef(0)
 
   useEffect(() => {
     if (!selectedTestId) {
       navigate('/admin')
     }
     setText(currentData?.text ?? '')
-    setAnswers(currentData?.answers ?? [])
+    setAnswers((currentData?.answers ?? []).map(a => ({ ...a, id: nextIdRef.current++ })))
   }, [currentData, selectedTestId, navigate])
 
   function answerSelected(id, key, value) {
     const copy = [...answers]
-    copy[id] = { ...copy[id], [key]: value }
+    copy[id] = {
+      id: copy[id]?.id ?? nextIdRef.current++,
+      ...copy[id],
+      [key]: value,
+    }
 
     if (key === 'text' && value.length === 0) {
       copy.splice(id, 1)
@@ -46,8 +51,8 @@ export default function Question() {
     setAnswers(copy)
   }
 
-  const answersToRender = [...answers, {}].map((answer, i) => (
-    <Accordion.Item key={i.toString()} eventKey={i.toString()}>
+  const answersToRender = [...answers, { id: nextIdRef.current }].map((answer, i) => (
+    <Accordion.Item key={answer.id} eventKey={answer.id}>
       <Accordion.Header>
         <div className={answer.correct ? 'answered' : ''}>
           {answer.text ?? 'Додати варіант відповіді'}
@@ -71,38 +76,40 @@ export default function Question() {
   ))
 
   return (
-    <Fragment>
-      <Form
-        autoComplete="off"
-        noValidate
-        onSubmit={(event) => {
-          event.preventDefault()
-          saveQuestion({
-            testId: selectedTestId,
-            question: { ...currentData, text: text, answers: answers },
-          })
-          navigate('/admin')
-        }}
+    <Form
+      autoComplete="off"
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault()
+        saveQuestion({
+          testId: selectedTestId,
+          question: {
+            ...currentData,
+            text: text,
+            answers: answers.map(({ text, correct }) => ({ text, correct })),
+          },
+        })
+        navigate('/admin')
+      }}
+    >
+      <Form.Label className="w-100 text-center">
+        Питання
+      </Form.Label>
+      <MarkdownEditor
+        value={text}
+        onChange={text => setText(text)}
+      />
+      <Accordion>
+        {answersToRender}
+      </Accordion>
+      <br />
+      <Button
+        variant="purple"
+        className="mb-3 btn-primary"
+        type="submit"
       >
-        <Form.Label className="w-100 text-center">
-          Питання
-        </Form.Label>
-        <MarkdownEditor
-          value={text}
-          onChange={text => setText(text)}
-        />
-        <Accordion>
-          {answersToRender}
-        </Accordion>
-        <br />
-        <Button
-          variant="purple"
-          className="mb-3 btn-primary"
-          type="submit"
-        >
-          Зберегти
-        </Button>
-      </Form>
-    </Fragment>
+        Зберегти
+      </Button>
+    </Form>
   )
 }
