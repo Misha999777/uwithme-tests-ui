@@ -10,7 +10,7 @@ import TestSelector from './TestSelector'
 import Timer from '../session/Timer'
 
 import logo from '../../assets/logo512.png'
-import '../../styles/Menu.css'
+import styles from '../../styles/Menu.module.css'
 
 export default function Menu() {
   const dispatch = useDispatch()
@@ -24,11 +24,12 @@ export default function Menu() {
   return (
     <Fragment>
       {width > 767 ? (
-        <Navbar className="flex-column left-menu">
+        <Navbar className={`flex-column ${styles.leftMenu}`}>
           {elements}
         </Navbar>
       ) : (
         <Offcanvas
+          className={styles.offcanvas}
           renderStaticNode
           show={isMenuOpened}
           onHide={() => dispatch(testsActions.menuToggled())}

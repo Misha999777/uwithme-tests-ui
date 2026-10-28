@@ -2,12 +2,12 @@ import { Fragment } from 'react'
 
 import { SyncLoader } from 'react-spinners'
 
-import '../../styles/Loader.css'
+import styles from '../../styles/Loader.module.css'
 
 export default function LoadingIndicator({ loading = true, children = null }) {
 
   const loader = (
-    <div className="overlay">
+    <div className={styles.overlay}>
       <SyncLoader color="#FFFFFF" />
     </div>
   )

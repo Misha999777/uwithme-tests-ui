@@ -8,7 +8,7 @@ import { useWindowSize } from '../../hooks/useWindowSize'
 import { authService } from '../../service/authService'
 
 import logo from '../../assets/logo512.png'
-import '../../styles/Header.css'
+import styles from '../../styles/Header.module.css'
 
 export default function Header() {
   const dispatch = useDispatch()
@@ -16,7 +16,7 @@ export default function Header() {
   const [width] = useWindowSize()
 
   return (
-    <Nav className="ps-3 pe-3 navbar toolbar">
+    <Nav className={`ps-3 pe-3 navbar ${styles.toolbar}`}>
       {width < 767 && pathname !== '/start' ? (
         <Navbar.Toggle
           onClick={() => dispatch(testsActions.menuToggled())}

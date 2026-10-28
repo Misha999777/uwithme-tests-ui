@@ -1,6 +1,6 @@
 import { Button, Pagination } from 'react-bootstrap'
 
-import '../../styles/Paging.css'
+import styles from '../../styles/Paging.module.css'
 
 export default function Paging({ result, questions, selectedQuestion, userAnswersByQuestionId, onQuestionSelected }) {
 
@@ -52,7 +52,7 @@ export default function Paging({ result, questions, selectedQuestion, userAnswer
           Наступне питання
         </Button>
       )}
-      <Pagination className="flex-wrap justify-content-center mt-3">
+      <Pagination className={`flex-wrap justify-content-center mt-3 ${styles.pagination}`}>
         {listItems}
       </Pagination>
     </div>

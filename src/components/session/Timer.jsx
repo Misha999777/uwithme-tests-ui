@@ -9,6 +9,7 @@ import { useFetchTestSessionQuery, useSaveTestSessionMutation } from '../../stor
 import { selectAnswers, selectTestId } from '../../store/session/sessionSlice'
 
 import logo from '../../assets/logo32.png'
+import styles from '../../styles/Menu.module.css'
 
 export default function Timer() {
   const testId = useSelector(selectTestId)
@@ -54,7 +55,7 @@ export default function Timer() {
         Закінчити тест
       </Button>
       <Toast
-        className="position-fixed bottom-0 end-0 m-3"
+        className={`position-fixed bottom-0 end-0 m-3 ${styles.toast}`}
         show={show}
         onClose={() => setShow(false)}
       >
