@@ -8,6 +8,7 @@ import { useFetchTestsQuery } from '../../store/tests/testsApiSlice'
 import { selectTestId, testsActions } from '../../store/tests/testsSlice'
 
 import logo from '../../assets/logo32.png'
+import styles from '../../styles/Menu.module.css'
 
 export default function TestSelector() {
   const dispatch = useDispatch()
@@ -73,7 +74,7 @@ export default function TestSelector() {
         {listItems}
       </ListGroup>
       <Toast
-        className="position-fixed bottom-0 end-0 m-3"
+        className={`position-fixed bottom-0 end-0 m-3 ${styles.toast}`}
         show={show}
         delay={3000}
         autohide

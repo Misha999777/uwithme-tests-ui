@@ -1,0 +1,11 @@
+.leftMenu {
+    flex: 0 0 250px;
+}
+
+.offcanvas {
+    --bs-offcanvas-width: 250px;
+}
+
+.toast {
+    --bs-toast-max-width: 250px;
+}

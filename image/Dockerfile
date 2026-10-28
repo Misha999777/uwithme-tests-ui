@@ -5,6 +5,7 @@ RUN rm -r /usr/share/nginx/html/*
 COPY ./dist /usr/share/nginx/html
 
 COPY ./image/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./image/env.template.js /opt/uwm/env.template.js
 COPY ./image/substitute.sh /opt/uwm/substitute.sh
 
 WORKDIR /usr/share/nginx/html

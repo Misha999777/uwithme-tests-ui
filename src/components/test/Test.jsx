@@ -11,8 +11,6 @@ import { hasAdminRole } from '../../service/authService'
 import QuestionList from './QuestionList'
 import TestSessionList from './ResultList'
 
-import '../../styles/Test.css'
-
 export default function Test() {
   const dispatch = useDispatch()
   const navigate = useNavigate()

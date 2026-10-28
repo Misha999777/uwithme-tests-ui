@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap'
 
 import MarkdownRenderer from './MarkdownRenderer'
 
-import '../../styles/Viewer.css'
+import styles from '../../styles/Viewer.module.css'
 
 export default function QuestionViewer({ result, question, userAnswers, onAnswerSelected }) {
 
@@ -26,8 +26,8 @@ export default function QuestionViewer({ result, question, userAnswers, onAnswer
   ))
 
   return (
-    <div className="pt-5 d-flex question">
-      <div className="text-center renderer">
+    <div className={`pt-5 d-flex ${styles.question}`}>
+      <div className={`text-center ${styles.renderer}`}>
         <MarkdownRenderer source={question?.text} />
       </div>
       <Form.Group>

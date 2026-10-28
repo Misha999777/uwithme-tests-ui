@@ -8,4 +8,4 @@ fi
 
 export SCHEMA="${SCHEMA}"
 
-envsubst < env.template.js > env.js
+envsubst < /opt/uwm/env.template.js > env.js

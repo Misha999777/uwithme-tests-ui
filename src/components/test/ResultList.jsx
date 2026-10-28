@@ -7,6 +7,8 @@ import { Button, Table } from 'react-bootstrap'
 import { selectTestId, testsActions } from '../../store/tests/testsSlice'
 import { useDeleteResultMutation, useFetchResultsQuery } from '../../store/tests/testsApiSlice'
 
+import styles from '../../styles/Test.module.css'
+
 export default function ResultList() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -53,8 +55,8 @@ export default function ResultList() {
       <thead>
         <tr>
           <th className="col-6">Імʼя</th>
-          <th className="col-2 detail">Бал</th>
-          <th className="col-2 detail">Час</th>
+          <th className={`col-2 ${styles.detail}`}>Бал</th>
+          <th className={`col-2 ${styles.detail}`}>Час</th>
           <th className="col-2">Дії</th>
         </tr>
       </thead>
