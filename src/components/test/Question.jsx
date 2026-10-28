@@ -9,8 +9,6 @@ import { selectQuestionId, selectTestId } from '../../store/tests/testsSlice'
 import { useFetchQuestionQuery, useSaveQuestionMutation } from '../../store/tests/testsApiSlice'
 import MarkdownEditor from '../common/MarkdownEditor'
 
-import '../../styles/Question.css'
-
 export default function Question() {
   const navigate = useNavigate()
 

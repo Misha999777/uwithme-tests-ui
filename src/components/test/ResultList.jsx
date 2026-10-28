@@ -42,7 +42,7 @@ export default function ResultList() {
             deleteResult({ testId: selectedTestId, sessionId: item.id })
           }}
         >
-          <i className="fa fa-trash-o" />
+          ✕
         </Button>
       </td>
     </tr>

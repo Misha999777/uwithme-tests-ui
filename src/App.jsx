@@ -10,7 +10,6 @@ import LoadingIndicator from './components/common/LoadingIndicator'
 import Header from './components/navigation/Header'
 import Menu from './components/navigation/Menu'
 
-import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import './styles/App.css'
 

@@ -11,3 +11,8 @@
     width: 100%;
     overflow-x: auto;
 }
+
+.renderer pre {
+    display: inline-block;
+    text-align: left;
+}
