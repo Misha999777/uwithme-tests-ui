@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import { store } from './store/store'
+import { authService } from './service/authService'
 import LoadingIndicator from './components/common/LoadingIndicator'
 import App from './App'
 
@@ -42,6 +43,8 @@ const router = createBrowserRouter([
     ],
   },
 ])
+
+await authService.init()
 
 const root = createRoot(document.getElementById('root'))
 

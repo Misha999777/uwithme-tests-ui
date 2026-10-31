@@ -14,10 +14,10 @@ To develop the application, you will need:
 To run this application, follow these steps:
 
 1. Download the [Docker files](https://github.com/HappyMary16/uwithme-docker-files).
-2. Start them using:
+2. Start the development configuration (PostgreSQL, Keycloak, Caddy and oauth2-proxy) using:
 
 ```shell
-docker compose up -d
+docker compose -f docker-compose.dev.yml up -d
 ```
 
 3. Download the [University With Me Tests Service](https://github.com/Misha999777/uwithme-tests-service).
@@ -38,6 +38,9 @@ npm install
 ```shell
 npm start
 ```
+
+7. Open the UI at [http://localhost:4180](http://localhost:4180).
+   Caddy logs you in with oauth2-proxy, serves the Vite dev server and forwards `/api` to the Tests Service.
 
 ## Copyright
 
