@@ -1,13 +1,10 @@
-FROM nginx:1.23.3
+FROM nginx:1.27-alpine
 
-RUN rm -r /usr/share/nginx/html/*
-
-COPY ./dist /usr/share/nginx/html
+EXPOSE 8091
 
 COPY ./image/nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./image/env.template.js /opt/uwm/env.template.js
-COPY ./image/substitute.sh /opt/uwm/substitute.sh
+
+RUN rm /usr/share/nginx/html/index.html
+COPY ./dist /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
-
-CMD /opt/uwm/substitute.sh && nginx -g 'daemon off;'
